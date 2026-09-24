@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>NO CAP - Location de Casquettes Streetwear Lyon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <!-- FontAwesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar selection:bg-brand-600 selection:text-white">
+
+<header class="sticky top-0 z-50 glass-nav">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="javascript:void(0)" onclick="switchPage('accueil')">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center font-black text-white text-xl shadow-lg shadow-brand-600/30 group-hover:scale-105 transition-transform">
+                    NC
+                </div>
+<div>
+<span class="text-2xl font-black tracking-wider text-white flex items-center gap-1.5">
+                        NO CAP <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block -mt-1">Lyon 69002</span>
+</div>
+</a>
+<!-- Desktop Clean Navbar (Clean & Sleek) -->
+<nav class="hidden md:flex items-center gap-1 bg-slate-900/80 p-1.5 rounded-full border border-slate-800">
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-white bg-brand-600 shadow-md" id="nav-accueil" onclick="switchPage('accueil')">
+<i class="fa-solid fa-house mr-2 text-xs"></i>Accueil
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-boutique" onclick="switchPage('boutique')">
+<i class="fa-solid fa-store mr-2 text-xs"></i>Boutique
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-contact" onclick="switchPage('contact')">
+<i class="fa-solid fa-location-dot mr-2 text-xs"></i>Contact
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-admin" onclick="switchPage('admin')">
+<i class="fa-solid fa-user-shield mr-2 text-xs"></i>Admin
+                </button>
+</nav>
+<!-- Right Indicator & Mobile Menu Button -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-full border border-slate-800 text-xs font-semibold text-slate-300">
+<i class="fa-solid fa-store text-brand-500"></i>
+<span>15 Rue de la République</span>
+</div>
+<button class="md:hidden w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-200 hover:text-white" onclick="toggleMobileMenu()">
+<i class="fa-solid fa-bars text-lg"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation Menu Dropdown -->
+<div class="hidden md:hidden border-t border-slate-800 bg-slate-950 px-4 py-4 space-y-2" id="mobile-menu">
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('accueil'); toggleMobileMenu()">
+<i class="fa-solid fa-house text-brand-500 w-5"></i> Accueil
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('boutique'); toggleMobileMenu()">
+<i class="fa-solid fa-store text-brand-500 w-5"></i> Boutique
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('contact'); toggleMobileMenu()">
+<i class="fa-solid fa-location-dot text-brand-500 w-5"></i> Contact &amp; Accès
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('admin'); toggleMobileMenu()">
+<i class="fa-solid fa-user-shield text-brand-500 w-5"></i> Admin Dashboard
+            </button>
+</div>
+</header>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<section class="page-view space-y-16" id="page-accueil">
+<!-- Hero Banner -->
+<div class="relative rounded-3xl overflow-hidden glass-card p-8 sm:p-12 lg:p-16 border border-slate-800">
+<div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent z-10"></div>
+<img alt="Streetwear Lyon Cap" class="absolute inset-0 w-full h-full object-cover object-center" src="images/17.jpeg"/>
+<div class="relative z-20 max-w-2xl space-y-6">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-500 text-xs font-bold uppercase tracking-wider">
+ Location n°1 à Lyon
+                    </div>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Louez les meilleures casquettes <span class="text-gradient">streetwear à Lyon</span>
+</h1>
+<p class="text-slate-300 text-base sm:text-lg font-normal leading-relaxed">
+                        Accédez aux pièces rares, modèles vintage et éditions limitées sans vous ruiner. Retrait express au <strong class="text-white">15 Rue de la République (69002)</strong> à partir de <span class="text-brand-500 font-bold">  4€ / jour</span>.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-2">
+<button class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-rose-600 text-white font-bold text-sm shadow-xl shadow-brand-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3" onclick="switchPage('boutique')">
+ Explorer la boutique
+                        </button>
+<button class="px-8 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 hover:text-white hover:bg-slate-800 font-bold text-sm transition-all flex items-center gap-2" onclick="scrollToWorkflow()">
+ Comment ça marche
+                        </button>
+</div>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-card p-6 rounded-2xl text-center space-y-1">
+<p class="text-3xl font-black text-brand-500">350+</p>
+<p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Casquettes en Stock</p>
+</div>
+<div class="glass-card p-6 rounded-2xl text-center space-y-1">
+<p class="text-3xl font-black text-white">4.9 / 5</p>
+<p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Avis Clients Lyon</p>
+</div>
+<div class="glass-card p-6 rounded-2xl text-center space-y-1">
+<p class="text-3xl font-black text-brand-500">100%</p>
+<p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Authentique &amp; Clean</p>
+</div>
+<div class="glass-card p-6 rounded-2xl text-center space-y-1">
+<p class="text-3xl font-black text-white">2H</p>
+<p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Retrait Express 69002</p>
+</div>
+</div>
+<!-- How It Works Workflow (4 Steps) -->
+<div class="space-y-8" id="workflow-section">
+<div class="text-center space-y-2">
+<h2 class="text-3xl font-extrabold tracking-tight">Comment ça marche ?</h2>
+<p class="text-slate-400 text-sm">Louer une casquette de marque n'a jamais été aussi simple à Lyon</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="glass-card p-6 rounded-2xl relative space-y-4 border-l-4 border-l-brand-500">
+<div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center font-black text-lg">01</div>
+<h3 class="font-bold text-lg text-white">Choisis ta Cap</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Parcours notre catalogue de Snapbacks, Buckets et casquettes de luxe.</p>
+</div>
+<!-- Step 2 -->
+<div class="glass-card p-6 rounded-2xl relative space-y-4 border-l-4 border-l-brand-500">
+<div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center font-black text-lg">02</div>
+<h3 class="font-bold text-lg text-white">Sélectionne tes Dates</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Fixe la durée de location (de 1 à 30 jours). Le prix total se calcule en Euros (€).</p>
+</div>
+<!-- Step 3 -->
+<div class="glass-card p-6 rounded-2xl relative space-y-4 border-l-4 border-l-brand-500">
+<div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center font-black text-lg">03</div>
+<h3 class="font-bold text-lg text-white">Récupère en Shop</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Rends-toi au 15 Rue de la République à Lyon 2ème avec ton QR code.</p>
+</div>
+<!-- Step 4 -->
+<div class="glass-card p-6 rounded-2xl relative space-y-4 border-l-4 border-l-brand-500">
+<div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center font-black text-lg">04</div>
+<h3 class="font-bold text-lg text-white">Brille &amp; Retourne</h3>
+<p class="text-slate-400 text-sm leading-relaxed">Profite de ton style pour tes événements, clips ou soirées puis rapporte-la.</p>
+</div>
+</div>
+</div>
+<!-- Featured Caps Preview Grid -->
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-2xl font-bold tracking-tight">Pépites en Tendance à Lyon</h2>
+<p class="text-slate-400 text-xs">Modèles les plus réservés cette semaine</p>
+</div>
+<button class="text-brand-500 hover:text-brand-600 font-semibold text-sm flex items-center gap-2" onclick="switchPage('boutique')">
+                        Voir tout le catalogue <i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="home-featured-grid">
+<!-- Populated dynamically via JS -->
+</div>
+</div>
+<!-- Customer Reviews -->
+<div class="glass-card p-8 rounded-3xl space-y-6">
+<h3 class="text-xl font-bold text-white text-center"><i class="fa-solid fa-quote-left text-brand-500 mr-2"></i>Avis de la communauté Lyonnaise</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 space-y-3">
+<div class="flex text-amber-400 text-xs gap-1">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="text-slate-300 text-xs italic">"Concept incroyable ! J'ai loué la Jacquemus pour un shooting aux Confluences, casquette neuve et retrait rapide en presqu'île."</p>
+<p class="text-white text-xs font-bold">— Karim G. (Lyon 6e)</p>
+</div>
+<div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 space-y-3">
+<div class="flex text-amber-400 text-xs gap-1">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="text-slate-300 text-xs italic">"Franchement au top. 5€ la journée au lieu de lâcher 150€. L'équipe du shop Rue de la République est super cool."</p>
+<p class="text-white text-xs font-bold">— Maxime L. (Villeurbanne)</p>
+</div>
+<div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 space-y-3">
+<div class="flex text-amber-400 text-xs gap-1">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</div>
+<p class="text-slate-300 text-xs italic">"Très propre, traitement désinfectant vapeur nickel entre chaque prêt. Je recommande à 100%."</p>
+<p class="text-white text-xs font-bold">— Sarah B. (Lyon 2e)</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="border-t border-slate-800 bg-slate-950 py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-brand-600 text-white font-black flex items-center justify-center text-sm">
+                    NC
+                </div>
+<div>
+<p class="text-sm font-bold text-white">NO CAP Lyon</p>
+<p class="text-xs text-slate-500">15 Rue de la République, 69002 Lyon</p>
+</div>
+</div>
+<div class="text-xs text-slate-400 text-center md:text-right space-y-1">
+<p>© 2026 NO CAP - Service de location de casquettes à Lyon.</p>
+</div>
+</div>
+</footer>
+
+<div class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

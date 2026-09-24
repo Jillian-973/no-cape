@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>NO CAP - Location de Casquettes Streetwear Lyon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <!-- FontAwesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar selection:bg-brand-600 selection:text-white">
+
+<header class="sticky top-0 z-50 glass-nav">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="javascript:void(0)" onclick="switchPage('accueil')">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center font-black text-white text-xl shadow-lg shadow-brand-600/30 group-hover:scale-105 transition-transform">
+                    NC
+                </div>
+<div>
+<span class="text-2xl font-black tracking-wider text-white flex items-center gap-1.5">
+                        NO CAP <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block -mt-1">Lyon 69002</span>
+</div>
+</a>
+<!-- Desktop Clean Navbar (Clean & Sleek) -->
+<nav class="hidden md:flex items-center gap-1 bg-slate-900/80 p-1.5 rounded-full border border-slate-800">
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-white bg-brand-600 shadow-md" id="nav-accueil" onclick="switchPage('accueil')">
+<i class="fa-solid fa-house mr-2 text-xs"></i>Accueil
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-boutique" onclick="switchPage('boutique')">
+<i class="fa-solid fa-store mr-2 text-xs"></i>Boutique
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-contact" onclick="switchPage('contact')">
+<i class="fa-solid fa-location-dot mr-2 text-xs"></i>Contact
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-admin" onclick="switchPage('admin')">
+<i class="fa-solid fa-user-shield mr-2 text-xs"></i>Admin
+                </button>
+</nav>
+<!-- Right Indicator & Mobile Menu Button -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-full border border-slate-800 text-xs font-semibold text-slate-300">
+<i class="fa-solid fa-store text-brand-500"></i>
+<span>15 Rue de la République</span>
+</div>
+<button class="md:hidden w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-200 hover:text-white" onclick="toggleMobileMenu()">
+<i class="fa-solid fa-bars text-lg"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation Menu Dropdown -->
+<div class="hidden md:hidden border-t border-slate-800 bg-slate-950 px-4 py-4 space-y-2" id="mobile-menu">
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('accueil'); toggleMobileMenu()">
+<i class="fa-solid fa-house text-brand-500 w-5"></i> Accueil
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('boutique'); toggleMobileMenu()">
+<i class="fa-solid fa-store text-brand-500 w-5"></i> Boutique
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('contact'); toggleMobileMenu()">
+<i class="fa-solid fa-location-dot text-brand-500 w-5"></i> Contact &amp; Accès
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('admin'); toggleMobileMenu()">
+<i class="fa-solid fa-user-shield text-brand-500 w-5"></i> Admin Dashboard
+            </button>
+</div>
+</header>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<section class="page-view hidden space-y-8" id="page-boutique">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+<div>
+<h1 class="text-3xl font-black tracking-tight">Catalogue des Casquettes</h1>
+<p class="text-slate-400 text-sm">Sélectionnez la casquette de vos rêves et réservez-la directement à Lyon</p>
+</div>
+<div class="text-xs text-slate-400 bg-slate-900 px-4 py-2 rounded-xl border border-slate-800 flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<span id="boutique-count">6 casquettes disponibles</span>
+</div>
+</div>
+<!-- Filters & Search Bar -->
+<div class="space-y-4">
+<div class="flex flex-col sm:flex-row gap-4">
+<!-- Search Input -->
+<div class="relative flex-grow">
+<i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 transition-colors" id="boutique-search" oninput="renderBoutique()" placeholder="Rechercher un modèle, marque, style..." type="text"/>
+</div>
+</div>
+<!-- Category Pills -->
+<div class="flex flex-wrap items-center gap-2 pt-1" id="category-pills">
+<button class="cat-pill active px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-brand-600 text-white" onclick="filterCategory('Toutes')">Toutes</button>
+<button class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800" onclick="filterCategory('Snapback')">Snapback</button>
+<button class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800" onclick="filterCategory('Bucket Hat')">Bucket Hat</button>
+<button class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800" onclick="filterCategory('Dad Hat')">Dad Hat</button>
+<button class="cat-pill px-4 py-2 rounded-xl text-xs font-semibold transition-all bg-slate-900 text-slate-400 hover:text-white border border-slate-800" onclick="filterCategory('Luxe')">Luxe</button>
+</div>
+</div>
+<!-- Caps Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="boutique-grid">
+<!-- Dynamically populated -->
+</div>
+</section>
+<section class="page-view hidden space-y-6" id="page-article">
+<!-- Breadcrumb -->
+<button class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800" onclick="switchPage('boutique')">
+<i class="fa-solid fa-arrow-left"></i> Retour au catalogue
+            </button>
+<!-- Article Details Container -->
+<div class="glass-card rounded-3xl p-6 lg:p-10 border border-slate-800">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<!-- Left: Cap Image & Specifications -->
+<div class="lg:col-span-6 space-y-4">
+<div class="relative rounded-2xl overflow-hidden bg-slate-950 aspect-square border border-slate-800 group">
+<img alt="Cap detail" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" id="detail-img" src=""/>
+<!-- Badges over image -->
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-600 text-white shadow-md" id="detail-category-badge"></span>
+<span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-900/90 text-emerald-400 border border-emerald-500/30" id="detail-condition-badge">Condition 10/10</span>
+</div>
+<div class="absolute top-4 right-4 px-3.5 py-1 rounded-full text-xs font-bold" id="detail-availability-badge"></div>
+</div>
+<!-- Pickup Notice -->
+<div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3 text-xs text-slate-300">
+<i class="fa-solid fa-shop text-brand-500 text-base"></i>
+<div>
+<p class="font-bold text-white">Retrait disponible immédiatement à Lyon</p>
+<p class="text-slate-400">15 Rue de la République, 69002 Lyon (Presqu'île)</p>
+</div>
+</div>
+</div>
+<!-- Right: Info & Dynamic Pricing Calculator -->
+<div class="lg:col-span-6 space-y-6 flex flex-col justify-between">
+<div class="space-y-4">
+<div>
+<h1 class="text-2xl sm:text-3xl font-black text-white" id="detail-title"></h1>
+<p class="text-slate-400 text-xs mt-1" id="detail-subtitle"></p>
+</div>
+<!-- Pricing Tag -->
+<div class="flex items-baseline gap-3 p-4 rounded-2xl bg-slate-900 border border-slate-800">
+<span class="text-3xl font-black text-brand-500" id="detail-price-day"></span>
+<span class="text-slate-400 text-xs">/ jour</span>
+<span class="text-slate-500 text-xs ml-auto">Caution requise : <strong class="text-slate-300" id="detail-caution"></strong></span>
+</div>
+<p class="text-slate-300 text-sm leading-relaxed" id="detail-desc"></p>
+<!-- Dynamic Duration Calculator -->
+<div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
+<h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+<i class="fa-regular fa-calendar-days text-brand-500"></i> Calculateur de location en Euros (€)
+                                </h3>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs text-slate-400 font-medium mb-1">Date de début</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500" id="calc-start-date" onchange="updateDetailPrice()" type="date"/>
+</div>
+<div>
+<label class="block text-xs text-slate-400 font-medium mb-1">Date de fin</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500" id="calc-end-date" onchange="updateDetailPrice()" type="date"/>
+</div>
+</div>
+<!-- Dynamic Price Summary -->
+<div class="pt-2 border-t border-slate-800 flex items-center justify-between">
+<div>
+<p class="text-xs text-slate-400">Durée calculée : <span class="font-bold text-white" id="calc-days-count">1 jour</span></p>
+<p class="text-xs text-slate-500">Caution d'empreinte : <span class="text-slate-300" id="calc-caution-amount">50 €</span></p>
+</div>
+<div class="text-right">
+<p class="text-xs text-slate-400">Total à payer</p>
+<p class="text-2xl font-black text-white" id="calc-total-price">5 €</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="pt-4">
+<button class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 to-rose-600 text-white font-bold text-sm shadow-xl shadow-brand-600/30 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2" id="detail-submit-btn" onclick="startReservationFromDetail()">
+<i class="fa-solid fa-key"></i> Réserver cette casquette
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="page-view hidden space-y-8 max-w-4xl mx-auto" id="page-reservation">
+<!-- Checkout Header & Step Progress Bar -->
+<div class="space-y-4 text-center">
+<h1 class="text-3xl font-black">Tunnel de Réservation</h1>
+<p class="text-slate-400 text-xs">Finalisez votre location en quelques secondes</p>
+<!-- Steps Indicator -->
+<div class="flex items-center justify-center gap-2 sm:gap-4 pt-4">
+<!-- Step 1 Badge -->
+<div class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-brand-600 text-white shadow-md" id="step-badge-1">
+<span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">1</span>
+<span>1. Coordonnées</span>
+</div>
+<div class="w-6 h-0.5 bg-slate-800"></div>
+<!-- Step 2 Badge -->
+<div class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-slate-900 text-slate-500 border border-slate-800" id="step-badge-2">
+<span class="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-[10px]">2</span>
+<span>2. Confirmation</span>
+</div>
+<div class="w-6 h-0.5 bg-slate-800"></div>
+<!-- Step 3 Badge -->
+<div class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-slate-900 text-slate-500 border border-slate-800" id="step-badge-3">
+<span class="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-[10px]">3</span>
+<span>3. Validation</span>
+</div>
+</div>
+</div>
+<!-- Item Recap Card Header -->
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between gap-4 border border-slate-800" id="checkout-item-recap">
+<div class="flex items-center gap-4">
+<img alt="Selected Cap" class="w-16 h-16 rounded-xl object-cover bg-slate-950 border border-slate-800" id="checkout-cap-img" src=""/>
+<div>
+<h4 class="font-bold text-white text-sm" id="checkout-cap-title"></h4>
+<p class="text-xs text-slate-400" id="checkout-cap-dates"></p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xs text-slate-400">Total Location</p>
+<p class="text-xl font-black text-brand-500" id="checkout-cap-price"></p>
+</div>
+</div>
+<!-- ÉTAPE 1 : FORMULAIRE VILLE / CLIENT -->
+<div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 border border-slate-800" id="checkout-step-1">
+<h3 class="text-lg font-bold text-white flex items-center gap-2">
+<i class="fa-solid fa-user text-brand-500"></i> Étape 1 : Vos Informations Personnelles
+                </h3>
+<form class="space-y-4" id="form-step-1" onsubmit="handleStep1Submit(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs text-slate-300 font-medium mb-1">Nom *</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-500" id="cust-nom" placeholder="Dupont" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs text-slate-300 font-medium mb-1">Prénom *</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-500" id="cust-prenom" placeholder="Alexandre" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs text-slate-300 font-medium mb-1">Téléphone (+33) *</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500" id="cust-phone" required="" type="tel" value="+33 6 12 34 56 78"/>
+</div>
+<div>
+<label class="block text-xs text-slate-300 font-medium mb-1">Adresse E-mail *</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-500" id="cust-email" placeholder="alexandre.dupont@email.fr" required="" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="sm:col-span-2">
+<label class="block text-xs text-slate-300 font-medium mb-1">Adresse postale *</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-500" id="cust-adresse" placeholder="12 Rue Victor Hugo" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs text-slate-300 font-medium mb-1">Ville &amp; Code Postal *</label>
+<select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-brand-500" id="cust-ville" required="">
+<option value="Lyon (69001)">Lyon (69001)</option>
+<option selected="" value="Lyon (69002)">Lyon (69002)</option>
+<option value="Lyon (69003)">Lyon (69003)</option>
+<option value="Lyon (69004)">Lyon (69004)</option>
+<option value="Lyon (69005)">Lyon (69005)</option>
+<option value="Lyon (69006)">Lyon (69006)</option>
+<option value="Lyon (69007)">Lyon (69007)</option>
+<option value="Lyon (69008)">Lyon (69008)</option>
+<option value="Lyon (69009)">Lyon (69009)</option>
+<option value="Villeurbanne">Villeurbanne</option>
+<option value="Paris">Paris</option>
+<option value="Marseille">Marseille</option>
+<option value="Bordeaux">Bordeaux</option>
+<option value="Lille">Lille</option>
+<option value="Toulouse">Toulouse</option>
+<option value="Autre ville">Autre ville</option>
+</select>
+</div>
+</div>
+<div class="pt-4 flex justify-end">
+<button class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-rose-600 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:scale-105 transition-all flex items-center gap-2" type="submit">
+                            Suivant (Confirmation) <i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</form>
+</div>
+<!-- ÉTAPE 2 : CONFIRMATION -->
+<div class="hidden glass-card p-6 sm:p-8 rounded-3xl space-y-6 border border-slate-800" id="checkout-step-2">
+<h3 class="text-lg font-bold text-white flex items-center gap-2">
+<i class="fa-solid fa-clipboard-check text-brand-500"></i> Étape 2 : Récapitulatif &amp; Confirmation
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-950 p-6 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-4 md:space-y-0">
+<div class="space-y-2 border-b md:border-b-0 md:border-r border-slate-800 pb-4 md:pb-0 md:pr-6">
+<p class="font-bold text-white text-sm uppercase tracking-wider text-brand-500">Détails de la réservation</p>
+<p><strong>Casquette :</strong> <span class="text-white" id="recap-item-title"></span></p>
+<p><strong>Période :</strong> <span class="text-white" id="recap-item-dates"></span></p>
+<p><strong>Durée totale :</strong> <span class="text-white" id="recap-item-days"></span></p>
+<p><strong>Prix location :</strong> <span class="text-white font-bold" id="recap-item-price"></span></p>
+<p><strong>Empreinte Caution :</strong> <span class="text-slate-400" id="recap-item-caution"></span> (non débitée)</p>
+</div>
+<div class="space-y-2">
+<p class="font-bold text-white text-sm uppercase tracking-wider text-brand-500">Coordonnées Client</p>
+<p><strong>Client :</strong> <span class="text-white" id="recap-cust-name"></span></p>
+<p><strong>Téléphone :</strong> <span class="text-white" id="recap-cust-phone"></span></p>
+<p><strong>E-mail :</strong> <span class="text-white" id="recap-cust-email"></span></p>
+<p><strong>Adresse :</strong> <span class="text-white" id="recap-cust-address"></span></p>
+<p><strong>Point de retrait :</strong> <span class="text-white">15 Rue de la République, 69002 Lyon</span></p>
+</div>
+</div>
+<!-- Two explicit buttons: Confirmer & Retour -->
+<div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 font-bold text-sm transition-all flex items-center justify-center gap-2" onclick="goToCheckoutStep(1)" type="button">
+<i class="fa-solid fa-arrow-left"></i> Retour aux informations
+                    </button>
+<button class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-rose-600 text-white font-bold text-sm shadow-xl shadow-brand-600/30 hover:scale-105 transition-all flex items-center justify-center gap-2" onclick="confirmReservation()" type="button">
+<i class="fa-solid fa-check"></i> Confirmer la Réservation
+                    </button>
+</div>
+</div>
+<!-- ÉTAPE 3 : VALIDATION & CONFIRMATION SUCCÈS -->
+<div class="hidden glass-card p-8 sm:p-12 rounded-3xl text-center space-y-6 border border-emerald-500/30" id="checkout-step-3">
+<div class="w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-3xl font-black shadow-lg border border-emerald-500/30 animate-bounce">
+<i class="fa-solid fa-check"></i>
+</div>
+<div class="space-y-2">
+<h2 class="text-3xl font-black text-white">Réservation Confirmée !</h2>
+<p class="text-slate-400 text-sm">Votre pass de retrait est prêt.</p>
+</div>
+<!-- Reservation ID Badge -->
+<div class="inline-block bg-slate-950 border border-slate-800 px-6 py-3 rounded-2xl text-center">
+<p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Numéro de réservation</p>
+<p class="text-2xl font-black text-brand-500 tracking-widest" id="success-booking-id">#CAP-8492</p>
+</div>
+<div class="max-w-md mx-auto bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 text-left space-y-2">
+<p class="text-white font-bold flex items-center gap-2"><i class="fa-solid fa-store text-brand-500"></i> Consignes de retrait :</p>
+<p>• Rends-toi au <strong>15 Rue de la République, 69002 Lyon</strong>.</p>
+<p>• Présente une pièce d'identité originale et la réservation <strong><span id="success-id-text">#CAP-8492</span></strong>.</p>
+<p>• La caution sera bloquée par empreinte bancaire lors du retrait.</p>
+</div>
+<div>
+<button class="px-8 py-4 rounded-xl bg-slate-900 border border-slate-700 text-white font-bold text-sm hover:bg-slate-800 transition-all flex items-center justify-center gap-2 mx-auto" onclick="resetAndGoHome()">
+<i class="fa-solid fa-house"></i> Retour à l'accueil
+                    </button>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="border-t border-slate-800 bg-slate-950 py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-brand-600 text-white font-black flex items-center justify-center text-sm">
+                    NC
+                </div>
+<div>
+<p class="text-sm font-bold text-white">NO CAP Lyon</p>
+<p class="text-xs text-slate-500">15 Rue de la République, 69002 Lyon</p>
+</div>
+</div>
+<div class="text-xs text-slate-400 text-center md:text-right space-y-1">
+<p>© 2026 NO CAP - Service de location de casquettes à Lyon.</p>
+</div>
+</div>
+</footer>
+
+<div class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

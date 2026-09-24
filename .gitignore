@@ -1,0 +1,17 @@
+# Dépendances (réinstallées avec npm install)
+node_modules/
+
+# Secrets : identifiants MongoDB, SMTP, JWT_SECRET
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Fichiers système / éditeur
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>NO CAP - Location de Casquettes Streetwear Lyon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <!-- FontAwesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar selection:bg-brand-600 selection:text-white">
+
+<header class="sticky top-0 z-50 glass-nav">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="javascript:void(0)" onclick="switchPage('accueil')">
+<div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center font-black text-white text-xl shadow-lg shadow-brand-600/30 group-hover:scale-105 transition-transform">
+                    NC
+                </div>
+<div>
+<span class="text-2xl font-black tracking-wider text-white flex items-center gap-1.5">
+                        NO CAP <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block -mt-1">Lyon 69002</span>
+</div>
+</a>
+<!-- Desktop Clean Navbar (Clean & Sleek) -->
+<nav class="hidden md:flex items-center gap-1 bg-slate-900/80 p-1.5 rounded-full border border-slate-800">
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-white bg-brand-600 shadow-md" id="nav-accueil" onclick="switchPage('accueil')">
+<i class="fa-solid fa-house mr-2 text-xs"></i>Accueil
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-boutique" onclick="switchPage('boutique')">
+<i class="fa-solid fa-store mr-2 text-xs"></i>Boutique
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-contact" onclick="switchPage('contact')">
+<i class="fa-solid fa-location-dot mr-2 text-xs"></i>Contact
+                </button>
+<button class="nav-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800" id="nav-admin" onclick="switchPage('admin')">
+<i class="fa-solid fa-user-shield mr-2 text-xs"></i>Admin
+                </button>
+</nav>
+<!-- Right Indicator & Mobile Menu Button -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-full border border-slate-800 text-xs font-semibold text-slate-300">
+<i class="fa-solid fa-store text-brand-500"></i>
+<span>15 Rue de la République</span>
+</div>
+<button class="md:hidden w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-200 hover:text-white" onclick="toggleMobileMenu()">
+<i class="fa-solid fa-bars text-lg"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation Menu Dropdown -->
+<div class="hidden md:hidden border-t border-slate-800 bg-slate-950 px-4 py-4 space-y-2" id="mobile-menu">
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('accueil'); toggleMobileMenu()">
+<i class="fa-solid fa-house text-brand-500 w-5"></i> Accueil
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('boutique'); toggleMobileMenu()">
+<i class="fa-solid fa-store text-brand-500 w-5"></i> Boutique
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('contact'); toggleMobileMenu()">
+<i class="fa-solid fa-location-dot text-brand-500 w-5"></i> Contact &amp; Accès
+            </button>
+<button class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-200 hover:bg-slate-900 flex items-center gap-3" onclick="switchPage('admin'); toggleMobileMenu()">
+<i class="fa-solid fa-user-shield text-brand-500 w-5"></i> Admin Dashboard
+            </button>
+</div>
+</header>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<section class="page-view hidden space-y-8" id="page-admin">
+<!-- Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+<div>
+<h1 class="text-3xl font-black text-white flex items-center gap-3">
+<i class="fa-solid fa-user-shield text-brand-500"></i> Espace Administration
+                    </h1>
+<p class="text-slate-400 text-sm">Gestion en temps réel de l'inventaire et des réservations clients</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2.5 rounded-xl bg-brand-600 text-white font-bold text-xs hover:bg-brand-700 transition-all flex items-center gap-2" onclick="openAddCapModal()">
+<i class="fa-solid fa-plus"></i> Ajouter un modèle
+                    </button>
+</div>
+</div>
+<!-- Admin Key Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-card p-5 rounded-2xl border border-slate-800">
+<p class="text-xs text-slate-400 font-semibold uppercase">Total Modèles</p>
+<p class="text-2xl font-black text-white mt-1" id="admin-stat-total">6</p>
+</div>
+<div class="glass-card p-5 rounded-2xl border border-slate-800">
+<p class="text-xs text-slate-400 font-semibold uppercase">Disponibles</p>
+<p class="text-2xl font-black text-emerald-400 mt-1" id="admin-stat-available">6</p>
+</div>
+<div class="glass-card p-5 rounded-2xl border border-slate-800">
+<p class="text-xs text-slate-400 font-semibold uppercase">Réservations Actives</p>
+<p class="text-2xl font-black text-brand-500 mt-1" id="admin-stat-resas">2</p>
+</div>
+<div class="glass-card p-5 rounded-2xl border border-slate-800">
+<p class="text-xs text-slate-400 font-semibold uppercase">Chiffre d'affaires estimé</p>
+<p class="text-2xl font-black text-amber-400 mt-1" id="admin-stat-revenue">84 €</p>
+</div>
+</div>
+<!-- Inventory Management Table (Caps + Real-time Toggle) -->
+<div class="glass-card rounded-3xl p-6 border border-slate-800 space-y-4">
+<h3 class="font-bold text-white text-lg flex items-center gap-2">
+ Inventaire &amp; Disponibilités en direct
+                </h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-800 text-xs uppercase text-slate-400 font-semibold">
+<th class="py-3 px-4">Casquette</th>
+<th class="py-3 px-4">Catégorie</th>
+<th class="py-3 px-4">Prix / Jour (€)</th>
+<th class="py-3 px-4">Caution (€)</th>
+<th class="py-3 px-4">Statut Disponibilité</th>
+<th class="py-3 px-4 text-right">Action Admin</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800/60 text-xs text-slate-300" id="admin-caps-tbody">
+<!-- Populated dynamically via JS -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Customer Reservations Table -->
+<div class="glass-card rounded-3xl p-6 border border-slate-800 space-y-4">
+<h3 class="font-bold text-white text-lg flex items-center gap-2">
+ Historique des Réservations Clients
+                </h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-800 text-xs uppercase text-slate-400 font-semibold">
+<th class="py-3 px-4">ID Réservation</th>
+<th class="py-3 px-4">Client</th>
+<th class="py-3 px-4">Casquette</th>
+<th class="py-3 px-4">Période</th>
+<th class="py-3 px-4">Total (€)</th>
+<th class="py-3 px-4">Statut</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800/60 text-xs text-slate-300" id="admin-reservations-tbody">
+<!-- Populated dynamically via JS -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="border-t border-slate-800 bg-slate-950 py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-brand-600 text-white font-black flex items-center justify-center text-sm">
+                    NC
+                </div>
+<div>
+<p class="text-sm font-bold text-white">NO CAP Lyon</p>
+<p class="text-xs text-slate-500">15 Rue de la République, 69002 Lyon</p>
+</div>
+</div>
+<div class="text-xs text-slate-400 text-center md:text-right space-y-1">
+<p>© 2026 NO CAP - Service de location de casquettes à Lyon.</p>
+</div>
+</div>
+</footer>
+
+<div class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" id="add-cap-modal">
+<div class="glass-card max-w-md w-full p-6 rounded-3xl border border-slate-800 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-white text-lg">Ajouter un modèle</h3>
+<button class="text-slate-400 hover:text-white" onclick="closeAddCapModal()"><i class="fa-solid fa-xmark text-lg"></i></button>
+</div>
+<form class="space-y-3 text-xs" onsubmit="handleAddCapSubmit(event)">
+<div>
+<label class="block text-slate-300 mb-1">Nom de la casquette</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white" id="add-name" placeholder="New Era 59FIFTY NY" required="" type="text"/>
+</div>
+<div>
+<label class="block text-slate-300 mb-1">Catégorie</label>
+<select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white" id="add-category">
+<option value="Snapback">Snapback</option>
+<option value="Bucket Hat">Bucket Hat</option>
+<option value="Dad Hat">Dad Hat</option>
+<option value="Luxe">Luxe</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-slate-300 mb-1">Prix / jour (€)</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white" id="add-price" min="1" required="" type="number" value="5"/>
+</div>
+<div>
+<label class="block text-slate-300 mb-1">Caution (€)</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white" id="add-caution" min="1" required="" type="number" value="50"/>
+</div>
+</div>
+<div>
+<label class="block text-slate-300 mb-1">URL Image Unsplash</label>
+<input class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white" id="add-image" required="" type="url" value="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&amp;fit=crop&amp;w=800&amp;q=80"/>
+</div>
+<div>
+<label class="block text-slate-300 mb-1">Description</label>
+<textarea class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white" id="add-desc" rows="2">Édition limitée streetwear disponible à Lyon.</textarea>
+</div>
+<div class="pt-2 flex justify-end gap-2">
+<button class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300" onclick="closeAddCapModal()" type="button">Annuler</button>
+<button class="px-5 py-2 rounded-xl bg-brand-600 text-white font-bold" type="submit">Ajouter</button>
+</div>
+</form>
+</div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

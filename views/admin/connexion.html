@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Connexion admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3/dist/index.global.js"
+    integrity="sha384-2ql948lIdLcGEE0/qxNiudyTjgauA3RDJERu5xW75kFCvSl5a9odyQYCb6tEjnmB" crossorigin="anonymous"></script>
+  <script src="/admin/connexion.js" defer></script>
+</head>
+<body class="flex min-h-screen items-center justify-center bg-slate-50 px-4 text-slate-800">
+
+  <main class="w-full max-w-sm space-y-6">
+    <div class="text-center">
+      <div class="text-5xl">🧢</div>
+      <h1 class="mt-2 text-2xl font-bold">Espace admin</h1>
+      <p class="text-sm text-slate-500">Location de casquettes</p>
+    </div>
+
+    <form id="connexion-form" class="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <label class="block">
+        <span class="mb-1 block text-sm font-medium">Identifiant</span>
+        <input name="identifiant" type="text" required maxlength="50" autocomplete="username" autofocus
+          class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200" />
+      </label>
+      <label class="block">
+        <span class="mb-1 block text-sm font-medium">Mot de passe</span>
+        <input name="motDePasse" type="password" required autocomplete="current-password"
+          class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200" />
+      </label>
+
+      <button type="submit"
+        class="w-full cursor-pointer rounded-lg bg-indigo-600 px-5 py-2.5 font-medium text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50">
+        Se connecter
+      </button>
+
+      <p id="connexion-message" class="hidden text-sm"></p>
+    </form>
+
+    <p class="text-center text-sm"><a href="/" class="text-indigo-600 hover:underline">← Retour au site</a></p>
+  </main>
+</body>
+</html>
