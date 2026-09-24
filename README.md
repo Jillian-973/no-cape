@@ -1,93 +1,138 @@
-# no-cap
+# NO CAP
 
+Site de **location de casquettes streetwear à Lyon**. Les clients parcourent le catalogue, choisissent leurs dates et réservent en ligne ; ils reçoivent un mail de confirmation. Un espace admin permet de gérer l'inventaire et de suivre les réservations.
 
+**Stack :** Node.js · Express 5 · MongoDB (Mongoose) · Nodemailer · Tailwind CSS
 
-## Getting started
+## Fonctionnalités
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+**Côté client**
+- Catalogue des casquettes avec le stock disponible à une date donnée
+- Réservation sur une période (30 jours maximum, jusqu'à un an à l'avance) avec vérification du stock en temps réel
+- Client déjà enregistré (même nom + même mail) : on lui propose de réutiliser ses informations au lieu d'en créer de nouvelles
+- Mail de confirmation envoyé par SMTP avec le récapitulatif de la réservation
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+**Côté admin**
+- Connexion sécurisée (mot de passe bcrypt, session JWT en cookie)
+- Ajout de modèles au catalogue, ouverture / fermeture à la réservation
+- Liste complète des réservations avec les coordonnées des clients
+- Signalement d'un problème sur une réservation : les articles concernés sortent définitivement du stock
 
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.outils.cloud/Killian/no-cap.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-* [Set up project integrations](https://gitlab.outils.cloud/Killian/no-cap/-/settings/integrations)
-
-## Collaborate with your team
-
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+**Sécurité :** en-têtes Helmet (CSP…), CORS restreint, limite de requêtes par IP, corps JSON limité à 10 ko, validation stricte des entrées (anti-injection NoSQL).
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Prérequis : **Node.js 20.19+** et une base **MongoDB** (Atlas ou locale).
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+```bash
+git clone https://gitlab.outils.cloud/Killian/no-cap.git
+cd no-cap
+npm install
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Crée un fichier `.env` à la racine (il n'est jamais commité) :
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```env
+PORT=3000
+MONGO_URI=mongodb+srv://<user>:<password>@<cluster>/<base>
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+# Clé qui signe les sessions admin : 32 caractères minimum, aléatoire
+JWT_SECRET=
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+# Serveur SMTP des mails de confirmation (port 465 = TLS)
+MAIL_HOST=
+MAIL_PORT=465
+MAIL_USER=
+MAIL_PASS=
+MAIL_FROM='"No Cap" <adresse@domaine.fr>'
+```
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Pour générer un `JWT_SECRET` :
 
-## License
-For open source projects, say how it is licensed.
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+<details>
+<summary>Variables optionnelles</summary>
+
+| Variable | Rôle |
+| --- | --- |
+| `NODE_ENV` | `production` en ligne (cookies sécurisés, passage forcé en https) |
+| `CORS_ORIGINS` | Origines autorisées à appeler l'API, séparées par des virgules (par défaut Live Server : `http://localhost:5500`) |
+| `TRUST_PROXY` | `1` derrière un hébergeur ou un proxy (Render, Heroku, Nginx…) pour que la limite de requêtes voie la vraie IP |
+
+</details>
+
+Puis initialise la base et lance le serveur :
+
+```bash
+npm run importer-casquettes   # ajoute le catalogue (relançable sans doublons)
+npm run creer-admin           # crée un compte admin
+npm run dev                   # démarre sur http://localhost:3000
+```
+
+## Scripts
+
+| Commande | Rôle |
+| --- | --- |
+| `npm start` | Lance le serveur |
+| `npm run dev` | Lance le serveur et le redémarre à chaque modification |
+| `npm run creer-admin` | Crée un compte admin ou change son mot de passe |
+| `npm run importer-casquettes` | Importe le catalogue de casquettes (n'ajoute que les modèles absents) |
+
+## Pages
+
+| URL | Page |
+| --- | --- |
+| `/` | Accueil |
+| `/boutique.html` | Catalogue et réservation |
+| `/contact.html` | Contact et boutiques |
+| `/admin/connexion` | Connexion admin |
+| `/admin.html` | Espace admin : inventaire et réservations *(connexion requise)* |
+| `/admin` | Dashboard détaillé des réservations *(connexion requise)* |
+
+> Ouvre le site sur **http://localhost:3000** (servi par Express). Avec Live Server, seul le port 5500 est prévu.
+
+## API
+
+Les dates circulent au format `JJ/MM/AAAA`.
+
+| Méthode | Route | Rôle |
+| --- | --- | --- |
+| GET | `/api/casquettes?date=` | Casquettes avec leur stock disponible à la date donnée |
+| GET | `/api/casquettes/:id/disponibilite?debut=&fin=` | Nombre d'exemplaires libres sur une période |
+| POST | `/api/clients` | Crée un client (`409 CLIENT_EXISTANT` si le nom + mail existe, `reutiliser: true` pour le reprendre) |
+| GET | `/api/reservations?date=` | Réservations publiques (prénom + initiale du nom seulement) avec leur état |
+| POST | `/api/reservations` | Crée une réservation et envoie le mail de confirmation |
+
+Routes admin (cookie de session obligatoire) :
+
+| Méthode | Route | Rôle |
+| --- | --- | --- |
+| POST | `/api/admin/connexion` | Connexion |
+| POST | `/api/admin/deconnexion` | Déconnexion |
+| GET | `/api/admin/moi` | Admin connecté |
+| GET | `/api/admin/reservations` | Toutes les réservations, avec les coordonnées des clients |
+| POST | `/api/admin/reservations/:id/probleme` | Signale un problème (articles retirés du stock) |
+| POST | `/api/admin/casquettes` | Ajoute un modèle au catalogue |
+| POST | `/api/admin/casquettes/:id/disponible` | Ouvre ou ferme un modèle à la réservation |
+
+## Structure
+
+```
+app.js            Serveur Express : sécurité, pages, routes API, connexion MongoDB
+controllers/      Routes de l'API (casquettes, clients, réservations, admin)
+models/           Schémas Mongoose (Casquette, Client, Reservation, Admin)
+utils/            Auth admin, calcul du stock, envoi des mails, sécurité
+scripts/          Création d'un admin, import du catalogue
+public/           Site public (HTML, js/, css/, images/)
+views/admin/      Pages admin, servies uniquement après connexion
+```
+
+## Règles de gestion du stock
+
+- `stock` = nombre total d'exemplaires possédés ; il ne change pas quand on réserve.
+- Une réservation occupe ses casquettes du jour de début au jour de fin **inclus**, puis elles reviennent dans le stock.
+- Les articles signalés avec un problème ne reviennent **jamais** dans le stock.
+- Les réservations annulées ne comptent pas.
